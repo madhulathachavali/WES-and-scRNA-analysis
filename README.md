@@ -1,7 +1,19 @@
 # WES-and-scRNA-analysis
 
- Whole-Exome Sequencing (WES) Pipeline
-This pipeline involves processing raw sequencing data to identify genomic variants.
+Whole-Exome Sequencing (WES) Pipeline
+
+## Tools and Technologies Used
+
+- **[SRA Toolkit](https://github.com/ncbi/sra-tools)**: Download and process raw sequencing data.
+- **BWA**: Align sequencing reads to the reference genome.
+- **Samtools**: Manipulate and process SAM/BAM files.
+- **Picard Tools**: Mark duplicates and manage alignment data.
+- **GATK**: Variant calling and filtering.
+- **VCFtools**: Analyze and manipulate VCF files.
+- **GRCh38**: Human reference genome.
+- **Python & Shell Scripting**: Automate data processing workflows.
+- **Anaconda**: Manage bioinformatics environments and tools.
+
 
 ## Step 1: Setting Up the Environment
 
@@ -90,11 +102,25 @@ mkdir -p ~/Desktop/WES_Analysis/{raw_data,processed_data,metadata,scRNA-data}
 ```bash
 mv ~/Downloads/*.fastq ~/Desktop/WES_Analysis/raw_data/
 ```
-### 5 Download reference genome 
+## Alignment using bwa 
+
+### 5.1 Download reference genome 
 ```bash
 wget https://ftp.ensembl.org/pub/release-110/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 gunzip Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 mv Homo_sapiens.GRCh38.dna.primary_assembly.fa reference.fasta
 ```
-
+### 5.2 Index the Reference Genome
+```bash
+bwa index reference.fasta
+```
+### 5.3 Proceed with Alignment
+- Align paired-end FASTQ files to the reference genome
+```bash
+bwa mem reference.fasta ~/Desktop/WES_Analysis/raw_data/SRR11060954_1.fastq ~/Desktop/WES_Analysis/raw_data/SRR11060954_2.fastq > ~/Desktop/WES_Analysis/processed_data/SRR11060954.sam
+```
+### 5.4 Verify Alignment Output
+```bash
+ls ~/Desktop/WES_Analysis/processed_data/SRR11060954.sam
+```
 

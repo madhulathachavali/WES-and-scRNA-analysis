@@ -38,7 +38,7 @@ This pipeline involves processing raw sequencing data to identify genomic varian
    conda activate wes_analysis
    ```
 
-### Step 2. Organize Data and Directories
+## Step 2. Organize Data and Directories
  ```bash
 mkdir -p ~/Desktop/WES_Analysis/{raw_data,processed_data,metadata,scRNA-data}
  ```

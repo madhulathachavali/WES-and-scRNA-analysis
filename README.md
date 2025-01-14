@@ -90,6 +90,11 @@ mkdir -p ~/Desktop/WES_Analysis/{raw_data,processed_data,metadata,scRNA-data}
 ```bash
 mv ~/Downloads/*.fastq ~/Desktop/WES_Analysis/raw_data/
 ```
-
+### 5 Download reference genome 
+```bash
+wget https://ftp.ensembl.org/pub/release-110/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+gunzip Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+mv Homo_sapiens.GRCh38.dna.primary_assembly.fa reference.fasta
+```
 
 
